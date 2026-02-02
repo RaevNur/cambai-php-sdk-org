@@ -10,7 +10,7 @@
  * @link     https://openapi-generator.tech
  */
 
-namespace Camb.ai\Model;
+namespace Camb\Ai\Model;
 
 /**
  * Languages Class Doc Comment

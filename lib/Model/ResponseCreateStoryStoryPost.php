@@ -26,10 +26,10 @@
  * Do not edit the class manually.
  */
 
-namespace Camb.ai\Model;
+namespace Camb\Ai\Model;
 
 use \ArrayAccess;
-use \Camb.ai\ObjectSerializer;
+use \Camb\Ai\ObjectSerializer;
 
 /**
  * ResponseCreateStoryStoryPost Class Doc Comment

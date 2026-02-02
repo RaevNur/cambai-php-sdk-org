@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Camb.ai\CambAIClient;
-use Camb.ai\Model\EndToEndDubbingRequestPayload;
-use Camb.ai\Model\Languages;
+use Camb\Ai\CambAIClient;
+use Camb\Ai\Model\EndToEndDubbingRequestPayload;
+use Camb\Ai\Model\Languages;
 
 $apiKey = $argv[1] ?? getenv('CAMBAI_API_KEY');
 

@@ -1,10 +1,10 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Camb.ai\CambAIClient;
-use Camb.ai\Model\CreateTTSRequestPayload;
-use Camb.ai\Model\Languages;
-use Camb.ai\Model\TaskStatus;
+use Camb\Ai\CambAIClient;
+use Camb\Ai\Model\CreateTTSRequestPayload;
+use Camb\Ai\Model\Languages;
+use Camb\Ai\Model\TaskStatus;
 
 $apiKey = $argv[1] ?? getenv('CAMBAI_API_KEY');
 

@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Camb.ai\CambAIClient;
-use Camb.ai\Model\CreateTextToAudioRequestPayload;
+use Camb\Ai\CambAIClient;
+use Camb\Ai\Model\CreateTextToAudioRequestPayload;
 
 $apiKey = $argv[1] ?? getenv('CAMBAI_API_KEY');
 if (!$apiKey) {

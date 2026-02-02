@@ -26,10 +26,10 @@
  * Do not edit the class manually.
  */
 
-namespace Camb.ai\Model;
+namespace Camb\Ai\Model;
 
 use \ArrayAccess;
-use \Camb.ai\ObjectSerializer;
+use \Camb\Ai\ObjectSerializer;
 
 /**
  * StreamTTSVoiceSettings Class Doc Comment
@@ -59,7 +59,8 @@ class StreamTTSVoiceSettings implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'enhance_reference_audio_quality' => 'bool',
-        'maintain_source_accent' => 'bool'
+        'maintain_source_accent' => 'bool',
+        'apply_ref_loudness_norm' => 'bool'
     ];
 
     /**
@@ -71,7 +72,8 @@ class StreamTTSVoiceSettings implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'enhance_reference_audio_quality' => null,
-        'maintain_source_accent' => null
+        'maintain_source_accent' => null,
+        'apply_ref_loudness_norm' => null
     ];
 
     /**
@@ -81,7 +83,8 @@ class StreamTTSVoiceSettings implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'enhance_reference_audio_quality' => true,
-        'maintain_source_accent' => true
+        'maintain_source_accent' => true,
+        'apply_ref_loudness_norm' => true
     ];
 
     /**
@@ -171,7 +174,8 @@ class StreamTTSVoiceSettings implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'enhance_reference_audio_quality' => 'enhance_reference_audio_quality',
-        'maintain_source_accent' => 'maintain_source_accent'
+        'maintain_source_accent' => 'maintain_source_accent',
+        'apply_ref_loudness_norm' => 'apply_ref_loudness_norm'
     ];
 
     /**
@@ -181,7 +185,8 @@ class StreamTTSVoiceSettings implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'enhance_reference_audio_quality' => 'setEnhanceReferenceAudioQuality',
-        'maintain_source_accent' => 'setMaintainSourceAccent'
+        'maintain_source_accent' => 'setMaintainSourceAccent',
+        'apply_ref_loudness_norm' => 'setApplyRefLoudnessNorm'
     ];
 
     /**
@@ -191,7 +196,8 @@ class StreamTTSVoiceSettings implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'enhance_reference_audio_quality' => 'getEnhanceReferenceAudioQuality',
-        'maintain_source_accent' => 'getMaintainSourceAccent'
+        'maintain_source_accent' => 'getMaintainSourceAccent',
+        'apply_ref_loudness_norm' => 'getApplyRefLoudnessNorm'
     ];
 
     /**
@@ -253,6 +259,7 @@ class StreamTTSVoiceSettings implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $this->setIfExists('enhance_reference_audio_quality', $data ?? [], null);
         $this->setIfExists('maintain_source_accent', $data ?? [], null);
+        $this->setIfExists('apply_ref_loudness_norm', $data ?? [], false);
     }
 
     /**
@@ -361,6 +368,40 @@ class StreamTTSVoiceSettings implements ModelInterface, ArrayAccess, \JsonSerial
             }
         }
         $this->container['maintain_source_accent'] = $maintain_source_accent;
+
+        return $this;
+    }
+
+    /**
+     * Gets apply_ref_loudness_norm
+     *
+     * @return bool|null
+     */
+    public function getApplyRefLoudnessNorm()
+    {
+        return $this->container['apply_ref_loudness_norm'];
+    }
+
+    /**
+     * Sets apply_ref_loudness_norm
+     *
+     * @param bool|null $apply_ref_loudness_norm apply_ref_loudness_norm
+     *
+     * @return self
+     */
+    public function setApplyRefLoudnessNorm($apply_ref_loudness_norm)
+    {
+        if (is_null($apply_ref_loudness_norm)) {
+            array_push($this->openAPINullablesSetToNull, 'apply_ref_loudness_norm');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('apply_ref_loudness_norm', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['apply_ref_loudness_norm'] = $apply_ref_loudness_norm;
 
         return $this;
     }

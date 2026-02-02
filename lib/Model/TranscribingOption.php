@@ -26,8 +26,8 @@
  * Do not edit the class manually.
  */
 
-namespace Camb.ai\Model;
-use \Camb.ai\ObjectSerializer;
+namespace Camb\Ai\Model;
+use \Camb\Ai\ObjectSerializer;
 
 /**
  * TranscribingOption Class Doc Comment

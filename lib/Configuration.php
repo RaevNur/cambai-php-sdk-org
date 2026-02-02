@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Camb.ai;
+namespace Camb\Ai;
 
 /**
  * Configuration Class Doc Comment

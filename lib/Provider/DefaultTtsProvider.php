@@ -1,8 +1,8 @@
 <?php
 
-namespace Camb.ai\Provider;
+namespace Camb\Ai\Provider;
 
-use Camb.ai\Api\TextToSpeechApi;
+use Camb\Ai\Api\TextToSpeechApi;
 
 class DefaultTtsProvider implements TtsProviderInterface
 {

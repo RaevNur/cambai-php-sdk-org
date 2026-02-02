@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Camb.ai\Provider\TtsProviderInterface;
-use Camb.ai\Model\CreateTTSRequestPayload;
-use Camb.ai\Model\CreateTTSOut;
+use Camb\Ai\Provider\TtsProviderInterface;
+use Camb\Ai\Model\CreateTTSRequestPayload;
+use Camb\Ai\Model\CreateTTSOut;
 
 class BasetenTtsProvider implements TtsProviderInterface
 {

@@ -26,10 +26,10 @@
  * Do not edit the class manually.
  */
 
-namespace Camb.ai\Model;
+namespace Camb\Ai\Model;
 
 use \ArrayAccess;
-use \Camb.ai\ObjectSerializer;
+use \Camb\Ai\ObjectSerializer;
 
 /**
  * StreamTTSInferenceOptions Class Doc Comment
@@ -61,7 +61,9 @@ class StreamTTSInferenceOptions implements ModelInterface, ArrayAccess, \JsonSer
         'stability' => 'float',
         'temperature' => 'float',
         'inference_steps' => 'int',
-        'speaker_similarity' => 'float'
+        'speaker_similarity' => 'float',
+        'localize_speaker_weight' => 'float',
+        'acoustic_quality_boost' => 'bool'
     ];
 
     /**
@@ -75,7 +77,9 @@ class StreamTTSInferenceOptions implements ModelInterface, ArrayAccess, \JsonSer
         'stability' => null,
         'temperature' => null,
         'inference_steps' => null,
-        'speaker_similarity' => null
+        'speaker_similarity' => null,
+        'localize_speaker_weight' => null,
+        'acoustic_quality_boost' => null
     ];
 
     /**
@@ -87,7 +91,9 @@ class StreamTTSInferenceOptions implements ModelInterface, ArrayAccess, \JsonSer
         'stability' => true,
         'temperature' => true,
         'inference_steps' => true,
-        'speaker_similarity' => true
+        'speaker_similarity' => true,
+        'localize_speaker_weight' => true,
+        'acoustic_quality_boost' => true
     ];
 
     /**
@@ -179,7 +185,9 @@ class StreamTTSInferenceOptions implements ModelInterface, ArrayAccess, \JsonSer
         'stability' => 'stability',
         'temperature' => 'temperature',
         'inference_steps' => 'inference_steps',
-        'speaker_similarity' => 'speaker_similarity'
+        'speaker_similarity' => 'speaker_similarity',
+        'localize_speaker_weight' => 'localize_speaker_weight',
+        'acoustic_quality_boost' => 'acoustic_quality_boost'
     ];
 
     /**
@@ -191,7 +199,9 @@ class StreamTTSInferenceOptions implements ModelInterface, ArrayAccess, \JsonSer
         'stability' => 'setStability',
         'temperature' => 'setTemperature',
         'inference_steps' => 'setInferenceSteps',
-        'speaker_similarity' => 'setSpeakerSimilarity'
+        'speaker_similarity' => 'setSpeakerSimilarity',
+        'localize_speaker_weight' => 'setLocalizeSpeakerWeight',
+        'acoustic_quality_boost' => 'setAcousticQualityBoost'
     ];
 
     /**
@@ -203,7 +213,9 @@ class StreamTTSInferenceOptions implements ModelInterface, ArrayAccess, \JsonSer
         'stability' => 'getStability',
         'temperature' => 'getTemperature',
         'inference_steps' => 'getInferenceSteps',
-        'speaker_similarity' => 'getSpeakerSimilarity'
+        'speaker_similarity' => 'getSpeakerSimilarity',
+        'localize_speaker_weight' => 'getLocalizeSpeakerWeight',
+        'acoustic_quality_boost' => 'getAcousticQualityBoost'
     ];
 
     /**
@@ -267,6 +279,8 @@ class StreamTTSInferenceOptions implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('temperature', $data ?? [], null);
         $this->setIfExists('inference_steps', $data ?? [], null);
         $this->setIfExists('speaker_similarity', $data ?? [], null);
+        $this->setIfExists('localize_speaker_weight', $data ?? [], null);
+        $this->setIfExists('acoustic_quality_boost', $data ?? [], null);
     }
 
     /**
@@ -326,6 +340,14 @@ class StreamTTSInferenceOptions implements ModelInterface, ArrayAccess, \JsonSer
 
         if (!is_null($this->container['speaker_similarity']) && ($this->container['speaker_similarity'] < 0.0)) {
             $invalidProperties[] = "invalid value for 'speaker_similarity', must be bigger than or equal to 0.0.";
+        }
+
+        if (!is_null($this->container['localize_speaker_weight']) && ($this->container['localize_speaker_weight'] > 1.0)) {
+            $invalidProperties[] = "invalid value for 'localize_speaker_weight', must be smaller than or equal to 1.0.";
+        }
+
+        if (!is_null($this->container['localize_speaker_weight']) && ($this->container['localize_speaker_weight'] < 0.0)) {
+            $invalidProperties[] = "invalid value for 'localize_speaker_weight', must be bigger than or equal to 0.0.";
         }
 
         return $invalidProperties;
@@ -507,6 +529,82 @@ class StreamTTSInferenceOptions implements ModelInterface, ArrayAccess, \JsonSer
         }
 
         $this->container['speaker_similarity'] = $speaker_similarity;
+
+        return $this;
+    }
+
+    /**
+     * Gets localize_speaker_weight
+     *
+     * @return float|null
+     */
+    public function getLocalizeSpeakerWeight()
+    {
+        return $this->container['localize_speaker_weight'];
+    }
+
+    /**
+     * Sets localize_speaker_weight
+     *
+     * @param float|null $localize_speaker_weight localize_speaker_weight
+     *
+     * @return self
+     */
+    public function setLocalizeSpeakerWeight($localize_speaker_weight)
+    {
+        if (is_null($localize_speaker_weight)) {
+            array_push($this->openAPINullablesSetToNull, 'localize_speaker_weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('localize_speaker_weight', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($localize_speaker_weight) && ($localize_speaker_weight > 1.0)) {
+            throw new \InvalidArgumentException('invalid value for $localize_speaker_weight when calling StreamTTSInferenceOptions., must be smaller than or equal to 1.0.');
+        }
+        if (!is_null($localize_speaker_weight) && ($localize_speaker_weight < 0.0)) {
+            throw new \InvalidArgumentException('invalid value for $localize_speaker_weight when calling StreamTTSInferenceOptions., must be bigger than or equal to 0.0.');
+        }
+
+        $this->container['localize_speaker_weight'] = $localize_speaker_weight;
+
+        return $this;
+    }
+
+    /**
+     * Gets acoustic_quality_boost
+     *
+     * @return bool|null
+     */
+    public function getAcousticQualityBoost()
+    {
+        return $this->container['acoustic_quality_boost'];
+    }
+
+    /**
+     * Sets acoustic_quality_boost
+     *
+     * @param bool|null $acoustic_quality_boost acoustic_quality_boost
+     *
+     * @return self
+     */
+    public function setAcousticQualityBoost($acoustic_quality_boost)
+    {
+        if (is_null($acoustic_quality_boost)) {
+            array_push($this->openAPINullablesSetToNull, 'acoustic_quality_boost');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('acoustic_quality_boost', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['acoustic_quality_boost'] = $acoustic_quality_boost;
 
         return $this;
     }

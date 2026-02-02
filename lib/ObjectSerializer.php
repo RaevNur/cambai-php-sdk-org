@@ -26,10 +26,10 @@
  * Do not edit the class manually.
  */
 
-namespace Camb.ai;
+namespace Camb\Ai;
 
 use GuzzleHttp\Psr7\Utils;
-use Camb.ai\Model\ModelInterface;
+use Camb\Ai\Model\ModelInterface;
 
 /**
  * ObjectSerializer Class Doc Comment

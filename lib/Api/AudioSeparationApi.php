@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Camb.ai\Api;
+namespace Camb\Ai\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -36,11 +36,11 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Camb.ai\ApiException;
-use Camb.ai\Configuration;
-use Camb.ai\FormDataProcessor;
-use Camb.ai\HeaderSelector;
-use Camb.ai\ObjectSerializer;
+use Camb\Ai\ApiException;
+use Camb\Ai\Configuration;
+use Camb\Ai\FormDataProcessor;
+use Camb\Ai\HeaderSelector;
+use Camb\Ai\ObjectSerializer;
 
 /**
  * AudioSeparationApi Class Doc Comment

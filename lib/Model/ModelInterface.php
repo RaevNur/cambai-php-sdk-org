@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Camb.ai\Model;
+namespace Camb\Ai\Model;
 
 /**
  * Interface abstracting model access.

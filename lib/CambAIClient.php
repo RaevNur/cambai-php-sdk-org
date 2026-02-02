@@ -1,14 +1,14 @@
 <?php
 
-namespace Camb.ai;
+namespace Camb\Ai;
 
-use Camb.ai\Api\TextToSpeechApi;
-use Camb.ai\Api\TextToVoiceApi;
-use Camb.ai\Api\TextToSoundApi;
-use Camb.ai\Api\DubApi;
-use Camb.ai\Configuration;
-use Camb.ai\Provider\TtsProviderInterface;
-use Camb.ai\Provider\DefaultTtsProvider;
+use Camb\Ai\Api\TextToSpeechApi;
+use Camb\Ai\Api\TextToVoiceApi;
+use Camb\Ai\Api\TextToSoundApi;
+use Camb\Ai\Api\DubApi;
+use Camb\Ai\Configuration;
+use Camb\Ai\Provider\TtsProviderInterface;
+use Camb\Ai\Provider\DefaultTtsProvider;
 
 class CambAIClient
 {

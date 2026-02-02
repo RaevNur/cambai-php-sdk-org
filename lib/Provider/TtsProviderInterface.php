@@ -1,8 +1,8 @@
 <?php
 
-namespace Camb.ai\Provider;
+namespace Camb\Ai\Provider;
 
-use Camb.ai\Model\CreateTTSRequestPayload;
+use Camb\Ai\Model\CreateTTSRequestPayload;
 
 interface TtsProviderInterface
 {

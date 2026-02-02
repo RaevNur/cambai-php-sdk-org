@@ -25,14 +25,14 @@
  * Do not edit the class manually.
  */
 
-namespace Camb.ai;
+namespace Camb\Ai;
 
 use ArrayAccess;
 use DateTime;
 use GuzzleHttp\Psr7\Utils;
 use Psr\Http\Message\StreamInterface;
 use SplFileObject;
-use Camb.ai\Model\ModelInterface;
+use Camb\Ai\Model\ModelInterface;
 
 /**
  * FormDataProcessor Class Doc Comment

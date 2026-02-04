@@ -1,0 +1,10 @@
+# # GetAudioSeparationResultOut
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**foreground_audio_url** | **string** |  |
+**background_audio_url** | **string** |  |
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

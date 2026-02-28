@@ -25,6 +25,7 @@ Add the Camb.ai repository and package to your `composer.json`:
 ```
 
 Then run:
+
 ```bash
 composer install
 ```
@@ -57,7 +58,7 @@ $payload = new CreateStreamTTSRequestPayload();
 $payload->setText("Hello! Welcome to Camb.ai text-to-speech.");
 $payload->setVoiceId(147320);
 $payload->setLanguage(Languages::EN_US);
-$payload->setSpeechModel("mars-flash");
+$payload->setSpeechModel("mars-8-flash");
 
 // Stream the audio
 $audioStream = $client->tts()->ttsTtsStreamPost($payload);
@@ -88,7 +89,7 @@ Camb.ai offers three MARS models optimized for different use cases:
 ### MARS Flash
 
 ```php
-$payload->setSpeechModel("mars-flash");
+$payload->setSpeechModel("mars-8-flash");
 $stream = $client->tts()->ttsTtsStreamPost($payload);
 ```
 
@@ -98,7 +99,7 @@ $stream = $client->tts()->ttsTtsStreamPost($payload);
 ### MARS Pro
 
 ```php
-$payload->setSpeechModel("mars-pro");
+$payload->setSpeechModel("mars-8-pro");
 $stream = $client->tts()->ttsTtsStreamPost($payload);
 ```
 
@@ -108,7 +109,7 @@ $stream = $client->tts()->ttsTtsStreamPost($payload);
 ### MARS Instruct
 
 ```php
-$payload->setSpeechModel("mars-instruct");
+$payload->setSpeechModel("mars-8-instruct");
 $payload->setUserInstructions("Speak in a warm, friendly tone");
 $stream = $client->tts()->ttsTtsStreamPost($payload);
 ```
@@ -182,6 +183,6 @@ $client->setTtsProvider($basetenProvider);
 
 ## Resources
 
-*   [GitHub: camb-ai/cambai-php-sdk](https://github.com/Camb-ai/cambai-php-sdk)
-*   [SDK Examples](https://github.com/Camb-ai/cambai-php-sdk/tree/master/examples)
-*   [API Reference](https://docs.camb.ai/api-reference/endpoint/create-tts-stream)
+* [GitHub: camb-ai/cambai-php-sdk](https://github.com/Camb-ai/cambai-php-sdk)
+* [SDK Examples](https://github.com/Camb-ai/cambai-php-sdk/tree/master/examples)
+* [API Reference](https://docs.camb.ai/api-reference/endpoint/create-tts-stream)

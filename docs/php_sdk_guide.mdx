@@ -61,7 +61,7 @@ $payload = new CreateStreamTTSRequestPayload();
 $payload->setText("Hello! Welcome to Camb.ai text-to-speech.");
 $payload->setVoiceId(147320);
 $payload->setLanguage(Languages::EN_US);
-$payload->setSpeechModel("mars-flash");
+$payload->setSpeechModel("mars-8-flash");
 
 // Stream the audio
 $audioStream = $client->tts()->ttsTtsStreamPost($payload);
@@ -94,7 +94,7 @@ Camb.ai offers three MARS models optimized for different use cases:
 <Tabs>
   <Tab title="MARS Flash">
     ```php
-    $payload->setSpeechModel("mars-flash");
+    $payload->setSpeechModel("mars-8-flash");
     $stream = $client->tts()->ttsTtsStreamPost($payload);
     ```
 
@@ -104,7 +104,7 @@ Camb.ai offers three MARS models optimized for different use cases:
   </Tab>
   <Tab title="MARS Pro">
     ```php
-    $payload->setSpeechModel("mars-pro");
+    $payload->setSpeechModel("mars-8-pro");
     $stream = $client->tts()->ttsTtsStreamPost($payload);
     ```
 
@@ -114,7 +114,7 @@ Camb.ai offers three MARS models optimized for different use cases:
   </Tab>
   <Tab title="MARS Instruct">
     ```php
-    $payload->setSpeechModel("mars-instruct");
+    $payload->setSpeechModel("mars-8-instruct");
     $payload->setUserInstructions("Speak in a warm, friendly tone");
     $stream = $client->tts()->ttsTtsStreamPost($payload);
     ```

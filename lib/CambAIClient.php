@@ -2,27 +2,31 @@
 
 namespace Camb\Ai;
 
-use Camb\Ai\Api\TextToSpeechApi;
-use Camb\Ai\Api\TextToVoiceApi;
-use Camb\Ai\Api\TextToSoundApi;
-use Camb\Ai\Api\DubApi;
-use Camb\Ai\Configuration;
-use Camb\Ai\Provider\TtsProviderInterface;
-use Camb\Ai\Provider\DefaultTtsProvider;
+use \Camb\Ai\Api\TextToSpeechApi;
+use \Camb\Ai\Api\TextToVoiceApi;
+use \Camb\Ai\Api\TextToSoundApi;
+use \Camb\Ai\Api\DubApi;
+use \Camb\Ai\Configuration;
+use \Camb\Ai\Provider\TtsProviderInterface;
+use \Camb\Ai\Provider\DefaultTtsProvider;
+
+use GuzzleHttp\Client;
 
 class CambAIClient
 {
     private $config;
+    private $httpClient;
     private $textToSpeechApi;
     private $textToVoiceApi;
     private $textToAudioApi;
     private $dubApi;
-    
+
     private $ttsProvider;
 
     public function __construct(string $apiKey)
     {
         $this->config = Configuration::getDefaultConfiguration()->setApiKey('x-api-key', $apiKey);
+        $this->httpClient = new Client(['timeout' => 300.0]);
     }
 
     public function setTtsProvider(TtsProviderInterface $provider)
@@ -41,7 +45,7 @@ class CambAIClient
     public function getTextToSpeechApi()
     {
         if (!$this->textToSpeechApi) {
-            $this->textToSpeechApi = new TextToSpeechApi(null, $this->config);
+            $this->textToSpeechApi = new TextToSpeechApi($this->httpClient, $this->config);
         }
         return $this->textToSpeechApi;
     }
@@ -49,15 +53,15 @@ class CambAIClient
     public function getTextToVoiceApi()
     {
         if (!$this->textToVoiceApi) {
-            $this->textToVoiceApi = new TextToVoiceApi(null, $this->config);
+            $this->textToVoiceApi = new TextToVoiceApi($this->httpClient, $this->config);
         }
         return $this->textToVoiceApi;
     }
 
     public function getTextToAudioApi()
     {
-         if (!$this->textToAudioApi) {
-            $this->textToAudioApi = new TextToSoundApi(null, $this->config);
+        if (!$this->textToAudioApi) {
+            $this->textToAudioApi = new TextToSoundApi($this->httpClient, $this->config);
         }
         return $this->textToAudioApi;
     }
@@ -65,7 +69,7 @@ class CambAIClient
     public function getDubApi()
     {
         if (!$this->dubApi) {
-            $this->dubApi = new DubApi(null, $this->config);
+            $this->dubApi = new DubApi($this->httpClient, $this->config);
         }
         return $this->dubApi;
     }

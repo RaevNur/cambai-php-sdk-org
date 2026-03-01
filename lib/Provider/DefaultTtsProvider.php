@@ -2,7 +2,7 @@
 
 namespace Camb\Ai\Provider;
 
-use Camb\Ai\Api\TextToSpeechApi;
+use \Camb\Ai\Api\TextToSpeechApi;
 
 class DefaultTtsProvider implements TtsProviderInterface
 {

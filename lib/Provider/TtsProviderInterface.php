@@ -2,7 +2,7 @@
 
 namespace Camb\Ai\Provider;
 
-use Camb\Ai\Model\CreateTTSRequestPayload;
+use \Camb\Ai\Model\CreateTTSRequestPayload;
 
 interface TtsProviderInterface
 {

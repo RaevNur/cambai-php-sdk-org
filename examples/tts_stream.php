@@ -39,10 +39,23 @@ $payload->setInferenceOptions($inferenceOptions);
 // Checking 'lib/Api/TextToSpeechApi.php' would be ideal, but assuming 'createStreamTTS' or similar.
 
 try {
-    echo "Initializing Stream TTS...\n";
-    // Using the raw API for stream since simpler wrapper might not cover it yet
-    // Finding the method name... 
-    // It's likely in TextToSpeechApi.
+    echo "Initiating Streaming TTS...\n";
+    $payload->setSpeechModel(CreateStreamTTSRequestPayload::SPEECH_MODEL_MARS_8);
+
+    // Call the actual streaming TTS method
+    $responseStream = $client->getTextToSpeechApi()->ttsTtsStreamPost($payload);
+
+    $outputFile = 'streaming_output.mp3';
+    
+    // The generated streaming response usually returns a SplFileObject or similar file stream descriptor
+    if ($responseStream instanceof \SplFileObject) {
+        $sourceStream = $responseStream->fread($responseStream->getSize());
+        file_put_contents($outputFile, $sourceStream);
+    } else {
+        file_put_contents($outputFile, (string)$responseStream);
+    }
+    
+    echo "Success! Streaming Audio saved to {$outputFile}\n";
 } catch (Exception $e) {
     echo 'Exception: ', $e->getMessage(), PHP_EOL;
 }

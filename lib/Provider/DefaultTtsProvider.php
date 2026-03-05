@@ -17,4 +17,9 @@ class DefaultTtsProvider implements TtsProviderInterface
     {
         return $this->api->createTtsTtsPost($payload, $run_id);
     }
+
+    public function tts($payload)
+    {
+        return $this->api->ttsTtsStreamPost($payload);
+    }
 }

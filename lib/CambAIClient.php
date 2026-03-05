@@ -4,7 +4,7 @@ namespace Camb\Ai;
 
 use \Camb\Ai\Api\TextToSpeechApi;
 use \Camb\Ai\Api\TextToVoiceApi;
-use \Camb\Ai\Api\TextToSoundApi;
+use \Camb\Ai\Api\TextToAudioApi;
 use \Camb\Ai\Api\DubApi;
 use \Camb\Ai\Configuration;
 use \Camb\Ai\Provider\TtsProviderInterface;
@@ -16,6 +16,12 @@ class CambAIClient
 {
     private $config;
     private $httpClient;
+
+    public $textToSpeech;
+    public $textToVoice;
+    public $textToAudio;
+    public $dub;
+
     private $textToSpeechApi;
     private $textToVoiceApi;
     private $textToAudioApi;
@@ -27,6 +33,11 @@ class CambAIClient
     {
         $this->config = Configuration::getDefaultConfiguration()->setApiKey('x-api-key', $apiKey);
         $this->httpClient = new Client(['timeout' => 300.0]);
+
+        $this->textToSpeech = $this->getTextToSpeechApi();
+        $this->textToVoice = $this->getTextToVoiceApi();
+        $this->textToAudio = $this->getTextToAudioApi();
+        $this->dub = $this->getDubApi();
     }
 
     public function setTtsProvider(TtsProviderInterface $provider)
@@ -61,7 +72,7 @@ class CambAIClient
     public function getTextToAudioApi()
     {
         if (!$this->textToAudioApi) {
-            $this->textToAudioApi = new TextToSoundApi($this->httpClient, $this->config);
+            $this->textToAudioApi = new TextToAudioApi($this->httpClient, $this->config);
         }
         return $this->textToAudioApi;
     }
